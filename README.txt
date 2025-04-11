@@ -2,7 +2,7 @@ AutoCreatorX - Deployment Guide
 
 1. Prerequisites:
    - Python 3.9+
-   - pip install streamlit openai
+   - pip install -r requirements.txt
 
 2. How to Run Locally:
    - Save files in a folder
@@ -14,11 +14,7 @@ AutoCreatorX - Deployment Guide
    b. Connect GitHub or upload project ZIP
    c. Launch & share your app
 
-Secrets Setup:
-- Create `.streamlit/secrets.toml`
-- Add your OpenAI API key like:
-OPENAI_API_KEY = "sk-xxxxxxxxxxxxxxxx"
-
 Next Up:
+- Add AI prompt integration (OpenAI)
 - Add auto-video creation
 - Add YouTube auto-upload

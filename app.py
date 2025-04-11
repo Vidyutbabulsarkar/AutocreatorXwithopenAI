@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 
-# Securely load OpenAI API key
+# Securely load OpenAI API key from secrets.toml
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="AutoCreatorX", layout="centered")
@@ -10,15 +10,14 @@ st.subheader("AI-Powered Content-to-Cash Generator")
 
 st.markdown("### Step 1: Choose a Niche")
 niche = st.selectbox("Pick a niche:", [
-    "Brain Boost Hacks", 
-    "Fat Loss Secrets", 
-    "Passive Income Ideas", 
-    "Spiritual Awakening", 
+    "Brain Boost Hacks", "Fat Loss Secrets", 
+    "Passive Income Ideas", "Spiritual Awakening", 
     "Sarkari Job Scams"
 ])
 
 st.markdown("### Step 2: One Click to Auto Generate Everything")
 
+# Function to get script from OpenAI
 def generate_script(niche):
     prompt = f"Create a viral YouTube Shorts script in the niche of '{niche}'. Format: HOOK, VALUE, CTA."
     response = openai.ChatCompletion.create(
@@ -37,12 +36,15 @@ if st.button("Start Automation"):
         st.success("✅ Content Generated!")
         st.markdown("### ✨ AI Script")
         st.code(script, language='markdown')
+
         st.markdown("### 🎬 YouTube Title")
         st.write(title)
+
         st.markdown("### 📝 YouTube Description")
         st.write(description)
-        st.markdown("### 🔗 Affiliate Links")
+
+        st.markdown("### 🔗 Affiliate Links Embedded")
         st.markdown("""
-- [Amazon Health Product](https://www.amazon.in/dp/B09YH8WGRN?tag=healthboostpr-20)  
-- [Digistore Brain Hack](https://www.digistore24.com/redir/428393/healthboostpro-20/)
-""")
+- Amazon Link: [Health Product](https://www.amazon.in/dp/B09YH8WGRN?tag=healthboostpr-20)  
+- Digistore24 Link: [Digital Brain Hack](https://www.digistore24.com/redir/428393/healthboostpro-20/)
+        """)
